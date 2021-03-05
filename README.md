@@ -1,4 +1,4 @@
-# Project Name
+# Homie Test
 
 > This is the `Homie` engineering test for the backend position. The goal of the test is to create an API to retrieve the
 > information of the different properties published for rental purposes. As mentioned in the test description, `Homie`

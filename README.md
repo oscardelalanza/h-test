@@ -4,6 +4,8 @@
 > information of the different properties published for rental purposes. As mentioned in the test description, `Homie`
 > works with different partners, like `Metros Cubicos`, `Inmuebles24`, `Segundamano`.
 
+![screenshot](docs/screenshots/portrait.jpg)
+
 ## Built With
 
 - `Ruby v2.7.2`

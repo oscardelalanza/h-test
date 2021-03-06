@@ -91,20 +91,41 @@ token.
 
 ![erd](docs/erd.png)
 
-To get a local copy up and running follow these simple example steps.
+**To get a local copy up and running follow these simple example steps.**
 
 ### Prerequisites
 
+If you want to get a local copy of this project, make sure you have installed the following in your local environment.
+- `Git`
+- `Ruby v2.7.2` or greater
+- `Rails v6.1.3`
+- `PostgreSQL`
+
 ### Setup
+
+Clone the project by running any of the following commands:
+- SSH: `git clone git@github.com:oscardelalanza/h-test.git`
+- HTTPS: `git clone https://github.com/oscardelalanza/h-test.git`
+- GitHub CLI: `gh repo clone oscardelalanza/h-test`
+- ZIP: [Download](https://github.com/oscardelalanza/h-test/archive/feature/planning.zip)
 
 ### Install
 
+- Run the command `bundle install` to install the required gems.
+- Run the command `rails db:create` to create the database.
+- Run the command `rails db:migrate` to execute the required database migrations.
+- Run the command `rails db:seed` to seed the database.
+
 ### Usage
+
 
 ### Run tests
 
+- Start the test suite by running the command `rails test`
+
 ### Deployment
 
+- Start the development server by running the command `rails server`
 
 ## Authors
 

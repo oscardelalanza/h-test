@@ -85,6 +85,11 @@ token.
 - Data models
   * `Partners`, this model will hold the partner information, and will be used to generate an access token to the API
     records.
+    
+    
+### Database Model
+
+![erd](docs/erd.png)
 
 To get a local copy up and running follow these simple example steps.
 

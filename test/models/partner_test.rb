@@ -1,4 +1,4 @@
-require "test_helper"
+require 'test_helper'
 
 class PartnerTest < ActiveSupport::TestCase
   def setup

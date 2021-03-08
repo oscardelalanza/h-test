@@ -1,6 +1,6 @@
 class PropertiesController < ApplicationController
   before_action :authenticate_owner!
-  before_action :find_property, only: %i[show update delete]
+  before_action :find_property, only: %i[show update destroy]
 
   def index
     @properties = current_owner.properties
@@ -34,7 +34,15 @@ class PropertiesController < ApplicationController
     end
   end
 
-  def destroy; end
+  def destroy
+    if @property&.destroy
+      head(:ok)
+    else
+      render json: {
+        message: 'impossible to delete'
+      }, status: :unprocessable_entity
+    end
+  end
 
   private
 

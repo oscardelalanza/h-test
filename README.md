@@ -14,7 +14,7 @@
 
 ## Live Demo
 
-[Live Demo Link](https://livedemo.com)
+[https://sheltered-anchorage-28656.herokuapp.com](https://sheltered-anchorage-28656.herokuapp.com/)
 
 ## Getting Started
 
@@ -109,6 +109,10 @@ Clone the project by running any of the following commands:
 - GitHub CLI: `gh repo clone oscardelalanza/h-test`
 - ZIP: [Download](https://github.com/oscardelalanza/h-test/archive/feature/planning.zip)
 
+Set the `ENV` variables by doing the following:
+- Rename the file `.env_example` to `.env`.
+- Change the predefined values of the keys (optional).
+
 ### Install
 
 - Run the command `bundle install` to install the required gems.
@@ -118,6 +122,240 @@ Clone the project by running any of the following commands:
 
 ### Usage
 
+##### Owners 
+
+- Create your account
+  * Send a `POST` request to the path `/owners` with the required parameters. See the `json` example:
+  
+    ```json
+      {
+        "owner": {
+          "name": "I'm The Owner",
+          "available_day": "Tuesday",
+          "hour_start": "07:00",
+          "hour_end": "20:00",
+          "phone": "1234567890",
+          "password": "mypassword"
+        }
+      }
+    ```
+  
+- Create a session
+  * Get authenticated to the server by sending a `POST` request to the path `/owners/sign_in` with the required
+    parameters. See the `json` example:
+    
+    ```json
+      {
+        "owner": {
+          "phone": "1234567890",
+          "password": "mypassword"
+        }
+      }
+    ```
+  
+  * After sending the request, the server will respond with an `Authorization Header`, send it as a `Bearer` token with 
+    all your future requests to be recognized as an `Owner`. You can also get the Authorization token after creating
+    your account.
+    
+    ```bulk
+      Authorization:Bearer eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiJiOTNiZTZhNS01MjZlLTRlN2YtYjExZi1hYzIyNjYzMmEyYTAiLCJzdWIiOiIzIiwic2NwIjoib3duZXIiLCJhdWQiOm51bGwsImlhdCI6MTYxNTIxOTc2MCwiZXhwIjoxNjE1MjIzMzYwfQ.ZYQuI8Ie-eBCW2aG2-jPuTPjVHmE4hshat-UHoKrryM
+    ```
+
+##### Properties
+
+In order to perform any of the following actions, you have to send an `Authorization Header` as a `Bearer token` with
+each request.
+
+- Index
+  * Send a `GET` request to the path `/properties` to get a list of all your properties registered.
+    See the example response.
+  
+    ```json
+      {
+        "data": [
+          {
+            "property": {
+              "id": 2,
+              "name": "Property Jane Doe",
+              "description": "description random",
+              "status": "published",
+              "rental_price": "150.53"
+            }
+          },
+          {
+            "property": {
+              "id": 3,
+              "name": "Property Jane Doe",
+              "description": "description random",
+              "status": "available",
+              "rental_price": "150.53"
+            }
+          },
+          {
+            "property": {
+              "id": 4,
+              "name": "Property Jane Doe",
+              "description": "description random",
+              "status": "deleted",
+              "rental_price": "150.53"
+            }
+          }
+        ]
+      }
+    ```
+  
+- Show
+  * Send a `GET` request to the path `/properties/:id` replacing the `:id` for the `id` of the property you want
+    to see in full detail. See the example response: `/properties/3`.
+    
+    ```json
+      {
+        "data": {
+          "property": {
+            "id": 3,
+            "name": "Property Jane Doe",
+            "description": "description random",
+            "status": "deleted",
+            "rental_price": "150.53"
+          }
+        }
+      }
+    ```
+    
+- Create
+  * Send a `POST` request to the path `/properties` to register a new property. See the example to know the required
+    `json` parameters.
+    
+    ```json
+      {
+        "property": {
+          "name": "my property",
+          "description": "apartment with 2 beds and one garage",
+          "status": "published",
+          "rental_price": 254.00
+        }
+      }
+    ```
+    
+- Update
+  * Send a `PUT`  request to the path `/properties/:id` replacing the `:id` key for the `id` of the property you want
+    to update. In the body of the request send and object with the attributes to update. See the example.
+    
+    ```json
+      {
+        "property": {
+          "name": "my property updated"
+        }
+      }
+    ```
+  
+- Delete
+  * Send a `DELETE` request to the path `/properties/:id` replacing the `:id` for the `id` of the property you want to
+    delete. `/property/10`.
+
+##### Partners
+
+Register as a partner to get access to the `published` properties by doing the following.
+- Send a `POST` request to the path `/partners` and send a `json` object with the name of your app. See the example.
+  
+  ```json
+    {
+      "partner": {
+        "name": "my app"
+      }
+    }
+  ```
+
+- The server will respond with a unique `auth_token`, this will be used to identify your app in your future requests.
+  See the example response.
+  ```json
+    {
+      "data": {
+        "partner": {
+          "name": "my app",
+          "auth_token": "dDWLa4qhzz2kRknScmX1RStT"
+        }
+      }
+    }
+  ```
+  
+- Use your `auth_token` to retrieve the `publisehd` properties by sending a `GET` request to the path
+  `/published_properties/:token` replacing the `:token` key by your `auth_token`. See the example request:
+  `/published_properties/dDWLa4qhzz2kRknScmX1RStT`
+  
+  ```json
+    {
+      "data": [
+        {
+          "property": {
+            "name": "Property Jane Doe",
+            "description": "description random",
+            "status": "published",
+            "rental_price": "150.53",
+            "owner": {
+              "name": "Jane Doe",
+              "phone": "4445556666",
+              "available?": true
+            }
+          }
+        },
+        {
+          "property": {
+            "name": "Property John Doe",
+            "description": "description random",
+            "status": "published",
+            "rental_price": "150.53",
+            "owner": {
+              "name": "John Doe",
+              "phone": "3335556666",
+              "available?": false
+            }
+          }
+        },
+        {
+          "property": {
+            "name": "Property Jeanna Doe",
+            "description": "description random",
+            "status": "published",
+            "rental_price": "150.53",
+            "owner": {
+              "name": "Jeanna Doe",
+              "phone": "4448886666",
+              "available?": false
+            }
+          }
+        },
+        {
+          "property": {
+            "name": "my property updated",
+            "description": "apartment with 2 beds and one garage",
+            "status": "published",
+            "rental_price": "254.0",
+            "owner": {
+              "name": "Jane Doe",
+              "phone": "4445556666",
+              "available?": true
+            }
+          }
+        }
+      ]
+    }
+  ```
+  
+#### Dummy data
+
+Use these owner accounts included in the seeds of the database.
+- Jane Doe
+  * phone: `4445556666`
+  * password: `123456`
+  
+- John Doe
+  * phone: `3335556666`
+  * password: `123456`
+  
+- Jeanna Doe
+  * phone: `4448886666`
+  * password: `123456`
 
 ### Run tests
 

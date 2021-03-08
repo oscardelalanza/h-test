@@ -341,6 +341,21 @@ Register as a partner to get access to the `published` properties by doing the f
       ]
     }
   ```
+  
+#### Dummy data
+
+Use these owner accounts included in the seeds of the database.
+- Jane Doe
+  * phone: `4445556666`
+  * password: `123456`
+  
+- John Doe
+  * phone: `3335556666`
+  * password: `123456`
+  
+- Jeanna Doe
+  * phone: `4448886666`
+  * password: `123456`
 
 ### Run tests
 

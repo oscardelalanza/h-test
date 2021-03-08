@@ -1,7 +1,9 @@
 class PropertiesController < ApplicationController
   before_action :authenticate_owner!
 
-  def index; end
+  def index
+    @properties = current_owner.properties
+  end
 
   def show; end
 

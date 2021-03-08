@@ -1,1 +1,3 @@
-json.partial! 'properties/property', property: @property
+json.data do
+  json.partial! 'properties/property', property: @property
+end

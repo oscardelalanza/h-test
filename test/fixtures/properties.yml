@@ -4,13 +4,8 @@
 # model remove the '{}' from the fixture names and add the columns immediately
 # below each fixture, per the syntax in the comments below
 #
-one:
-  name: one
-  available_day: Wednesday
-  hour_start: 09:00
-  hour_end: 18:00
-  phone: 6668887777
-  jti: randomstring
+#one: {}
+# column: value
 #
-# two: {}
+#two: {}
 # column: value

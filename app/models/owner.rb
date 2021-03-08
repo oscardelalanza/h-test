@@ -3,6 +3,8 @@ class Owner < ApplicationRecord
   TIME_LIMIT_START = Time.parse('08:00')
   TIME_LIMIT_END = Time.parse('20:00')
 
+  has_many :properties
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :jwt_authenticatable, jwt_revocation_strategy: self
   validates :name, presence: true, length: { maximum: 255 }

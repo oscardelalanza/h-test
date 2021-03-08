@@ -16,6 +16,14 @@ class Owner < ApplicationRecord
   validate :hour_start_validator
   validate :hour_end_validator
 
+  def available?
+    return false unless Time.now.wday == Date.parse(available_day).wday
+    return false unless Time.now > Time.parse(hour_start)
+    return false unless Time.now < Time.parse(hour_end)
+
+    true
+  end
+
   private
 
   def time_converter(time)

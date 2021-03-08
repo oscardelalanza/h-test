@@ -14,7 +14,7 @@
 
 ## Live Demo
 
-[Live Demo Link](https://livedemo.com)
+[https://sheltered-anchorage-28656.herokuapp.com](https://sheltered-anchorage-28656.herokuapp.com/)
 
 ## Getting Started
 
@@ -108,6 +108,10 @@ Clone the project by running any of the following commands:
 - HTTPS: `git clone https://github.com/oscardelalanza/h-test.git`
 - GitHub CLI: `gh repo clone oscardelalanza/h-test`
 - ZIP: [Download](https://github.com/oscardelalanza/h-test/archive/feature/planning.zip)
+
+Set the `ENV` variables by doing the following:
+- Rename the file `.env_example` to `.env`.
+- Change the predefined values of the keys (optional).
 
 ### Install
 

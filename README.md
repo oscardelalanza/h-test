@@ -122,6 +122,46 @@ Set the `ENV` variables by doing the following:
 
 ### Usage
 
+##### Owners 
+
+- Create your account
+  * Send a `POST` request to the path `/owners` with the required parameters. See the `json` example:
+  
+  ```json
+    {
+      "owner": {
+        "name": "I'm The Owner",
+        "available_day": "Tuesday",
+        "hour_start": "07:00",
+        "hour_end": "20:00",
+        "phone": "1234567890",
+        "password": "mypassword"
+      }
+    }
+  ```
+  
+- Create a session
+  * Get authenticated to the server by sending a `POST` request to the path `/owners/sign_in` with the required
+    parameters. See the `json` example:
+    
+  ```json
+    {
+      "owner": {
+        "phone": "1234567890",
+        "password": "mypassword"
+      }
+    }
+  ```
+  
+  * After sending the request, the server will respond with an `Authorization Header`, send it as a `Bearer` token with 
+    all your future requests to be recognized as an `Owner`.
+    
+  ```bulk
+    Authorization:Bearer eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiJiOTNiZTZhNS01MjZlLTRlN2YtYjExZi1hYzIyNjYzMmEyYTAiLCJzdWIiOiIzIiwic2NwIjoib3duZXIiLCJhdWQiOm51bGwsImlhdCI6MTYxNTIxOTc2MCwiZXhwIjoxNjE1MjIzMzYwfQ.ZYQuI8Ie-eBCW2aG2-jPuTPjVHmE4hshat-UHoKrryM
+  ```
+
+##### Properties
+##### Partners
 
 ### Run tests
 

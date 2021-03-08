@@ -5,7 +5,14 @@ class PropertiesController < ApplicationController
     @properties = current_owner.properties
   end
 
-  def show; end
+  def show
+    @property = Property.find_by(id: params[:id], owner_id: current_owner.id)
+    if @property
+      render :show, status: :ok
+    else
+      head(:not_found)
+    end
+  end
 
   def create
     @property = current_owner.properties.build(property_params)

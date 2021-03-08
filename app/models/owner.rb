@@ -29,7 +29,6 @@ class Owner < ApplicationRecord
     return unless scheduled
 
     errors.add(:hour_start, 'Out of permitted time') if (TIME_LIMIT_START > scheduled) || (TIME_LIMIT_END < scheduled)
-
   end
 
   def hour_end_validator

@@ -10,7 +10,7 @@ class Owner < ApplicationRecord
                             inclusion: { in: %w[Monday Tuesday Wednesday Thursday Friday Saturday Sunday] }
   validates :hour_start, presence: true, format: { with: /((2[0-3])|(1[0-9])|(0[0-9])):([0-5][0-9])/ }
   validates :hour_end, presence: true, format: { with: /((2[0-3])|(1[0-9])|(0[0-9])):([0-5][0-9])/ }
-  validates :phone, presence: true, numericality: true, length: { minimum: 10, maximum: 10 }
+  validates :phone, presence: true, numericality: true, length: { minimum: 10, maximum: 10 }, uniqueness: true
   validate :hour_start_validator
   validate :hour_end_validator
 

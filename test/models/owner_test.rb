@@ -68,5 +68,8 @@ class OwnerTest < ActiveSupport::TestCase
     assert_not @owner.save
     @owner.phone = '6664443333'
     assert @owner.save
+    new_owner = Owner.new(name: 'test owner', available_day: 'Monday', hour_start: '09:00', hour_end: '12:00',
+                          password: '123456', password_confirmation: '123456', phone: '6664443333')
+    assert_not new_owner.save
   end
 end

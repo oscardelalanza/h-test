@@ -4,7 +4,7 @@ class DeviseCreateOwners < ActiveRecord::Migration[6.1]
   def change
     create_table :owners do |t|
       t.string :name, null: false, default: "", length: 255
-      t.integer :available_day, null: false, default: 0
+      t.string :available_day, null: false, default: "", length: 9
       t.string :hour_start, null: false, default: "", length:5
       t.string :hour_end, null: false, default: "", length: 5
       t.string :jti, null: false

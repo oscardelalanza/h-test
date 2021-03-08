@@ -41,4 +41,5 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'devise-jwt'
 gem 'dotenv-rails'
+gem 'minitest-reporters'
 gem 'rubocop'

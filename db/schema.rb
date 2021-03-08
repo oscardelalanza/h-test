@@ -17,7 +17,7 @@ ActiveRecord::Schema.define(version: 2021_03_07_035009) do
 
   create_table "owners", force: :cascade do |t|
     t.string "name", default: "", null: false
-    t.integer "available_day", default: 0, null: false
+    t.string "available_day", default: "", null: false
     t.string "hour_start", default: "", null: false
     t.string "hour_end", default: "", null: false
     t.string "jti", null: false

@@ -10,7 +10,7 @@
 
 - `Ruby v2.7.2`
 - `Rails v6.1.3`
-- `PostgreSQL`, `devise-jwt`, `dotenv-rails`, `rubocop`
+- `PostgreSQL`, `devise-jwt`, `dotenv-rails`, `rubocop`, `jbuilder`
 
 ## Live Demo
 
